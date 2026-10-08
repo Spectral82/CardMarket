@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Заказы — Магазин{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Ваши заказы</h1>
+
+{% if orders %}
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Товар</th>
+                <th scope="col">Цена</th>
+                <th scope="col">Кол-во</th>
+                <th scope="col">Сумма</th>
+                <th scope="col">Заказчик</th>
+                <th scope="col">Статус</th>
+                <th scope="col">Дата</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.product_name }}</td>
+                <td>${{ order.price }}</td>
+                <td>{{ order.quantity }}</td>
+                <td>${{ order.price * order.quantity }}</td>
+                <td>{{ order.customer_name }}</td>
+                <td>
+                    {% if order.status == "Выполнен" %}
+                        <span class="badge bg-success">{{ order.status }}</span>
+                    {% elif order.status == "В обработке" %}
+                        <span class="badge bg-warning text-dark">{{ order.status }}</span>
+                    {% elif order.status == "Ожидает оплаты" %}
+                        <span class="badge bg-danger">{{ order.status }}</span>
+                    {% else %}
+                        <span class="badge bg-secondary">{{ order.status }}</span>
+                    {% endif %}
+                </td>
+                <td>{{ order.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info">
+    У вас пока нет оформленных заказов.
+</div>
+{% endif %}
+
+{% endblock %}

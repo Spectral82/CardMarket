@@ -1,0 +1,41 @@
+# IDE и редакторы кода
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Виртуальные окружения Python
+venv/
+env/
+ENV/
+
+# Компилированные файлы и кэш Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Базы данных (SQLite и др.)
+*.sqlite*
+*.db
+*.sqlite3
+
+# ОС и прочее
+.DS_Store
+Thumbs.db
